@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #output{
+            width: 100px;
+            height: 20px;
+            border:1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+<!--<input type="button" value="请求数据" onclick="ch()">-->
+<button onclick="gett()">GET请求数据</button>
+<button onclick="postt()">POST请求数据</button>
+<input type="text" placeholder="请输入账号" name="nicname" onblur="gget()">
+<div id="myDiv1">1345687897</div>
+<div id="myDiv2">333333</div>
+<p id="output"></p>
+
+
+
+<script>
+    //GET请求
+    function gett() {
+        //XmlHttpRequest对象
+        var xhr;
+        if (window.XMLHttpRequest) {
+            //code for IE7+,Firefox,
+            //Chrome,Opera,Safari
+            xhr = new XMLHttpRequest();
+        } else {
+            //code for IE6,IE5
+            xhr = new ActiveXObject("Microsoft.XHLHTTP");
+        }
+        //onreadystatechange事件
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //XHR响应
+                document.getElementById("myDiv1").innerHTML = xhr.responseText;
+            }
+        };
+        //XHR GET请求
+        xhr.open("GET", "/test?t=" + Math.random(), true);
+        xhr.send();
+    }
+    //POST请求
+    function postt() {
+        //XmlHttpRequest对象
+        var xhr;
+        if (window.XMLHttpRequest) {
+            //code for IE7+,Firefox,
+            //Chrome,Opera,Safari
+            xhr = new XMLHttpRequest();
+        } else {
+            //code for IE6,IE5
+            xhr = new ActiveXObject("Microsoft.XHLHTTP");
+        }
+        //onreadystatechange事件
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //XHR响应
+                document.getElementById("myDiv2").innerHTML = xhr.responseText;
+            }
+        };
+        //XHR  POST请求
+        xhr.open("POST", "/test-post", true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send("fname=各位同学&lname=你们");
+    }
+    //output请求
+    function gget() {
+        //XmlHttpRequest对象
+        var xhr;
+        if (window.XMLHttpRequest) {
+            //code for IE7+,Firefox,
+            //Chrome,Opera,Safari
+            xhr = new XMLHttpRequest();
+        } else {
+            //code for IE6,IE5
+            xhr = new ActiveXObject("Microsoft.XHLHTTP");
+        }
+        //onreadystatechange事件
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //XHR响应
+                document.getElementById("output").innerHTML = xhr.responseText;
+            }
+        };
+        //XHR  POST请求
+        xhr.open("POST", "/output-post", true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send("nicname=已存在");
+    }
+</script>
+</body>
+</html>

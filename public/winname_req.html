@@ -1,0 +1,21 @@
+<!--winname_req.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function getData(){
+        var iframe=document.getElementById('otherdomain');
+        iframe.src='winname_res.html';
+        setTimeout(function () {
+            window.location='winname_res.html';
+            window.name=iframe.contentWindow.name;
+        },1000);
+    }
+</script>
+<iframe src="http://localhost:3009/use_window_name.html" onload="getData()" id="otherdomain" style="display: none"></iframe>
+</body>
+</html>

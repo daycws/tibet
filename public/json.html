@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+</head>
+<body>
+Company:<span id="company"></span><br/>
+Address:<span id="jstreet"></span><br/>
+Employees 1:<span id="employees"></span><br/>
+<script>
+    var JSONObject={
+    "company":"睿峰科技",
+    "address":"成都市",
+    "employees":[{"firstName":"Bill","lastName":"Gates"},
+        {"firstName":"George","lastName":"Bush"},
+        {"firstName":"Thomas","lastName":"Carter"}
+    ]
+    };
+    document.getElementById("company").innerHTML=JSONObject.company;
+    document.getElementById("jstreet").innerHTML=JSONObject.address;
+    document.getElementById("employees").innerHTML=JSONObject.employees[0].firstName+""+JSONObject.employees[0].lastName;
+    //document.getElementById("employees").innerHTML=JSONObject.employees[1].firstName+""+JSONObject.employees[1].lastName;
+    //document.getElementById("employees").innerHTML=JSONObject.employees[2].firstName+""+JSONObject.employees[2].lastName;
+</script>
+</body>
+</html>
